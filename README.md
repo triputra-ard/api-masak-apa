@@ -23,7 +23,7 @@ Food recipes api bahasa Indonesia 🇮🇩 build with __Cheerio__ and __Node js_
 
 ### Endpoint Usage
 ---
-**Base Url** : `https://masak-apa.tomorisakura.vercel.app`
+**Base Url** : `https://api.masak-apa.vercel.app`
 
 | Endpoint | Usage | Example |
 |----------|-------|---------|
