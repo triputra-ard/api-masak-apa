@@ -35,7 +35,7 @@ Food recipes api bahasa Indonesia 🇮🇩 build with __Cheerio__ and __Node js_
 | article detail | `/article/:tag/:key` | `/article/makanan-gaya-hidup/papeda-dan-masakan-indonesia-timur` |
 
 #### What's the difference with the original?
-
+---
 Simplify the url and CORS site allowed
 
 #### Credits
