@@ -10,7 +10,7 @@
   "keywords": [
     "nodejs"
   ],
-  "author": "Reski Arianto",
+  "author": "Reski Arianto - redefine by Tri Putra Ardiyansah",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.20.0",
