@@ -2,7 +2,7 @@ const router = require('express').Router();
 const cors = require('cors');
 const route = router;
 
-const controller = require('../controller/index');
+const controller = require('../controller/mainController');
 
 route.get('/', (req, res) => {
     res.send({
@@ -16,7 +16,6 @@ route.get('/', (req, res) => {
         }
     });
 });
-
 
 route.get('/recipes', cors(), controller.newRecipes);
 route.get('/recipes/:page', cors(), controller.newRecipesByPage);

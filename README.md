@@ -18,23 +18,27 @@ Food recipes api bahasa Indonesia 🇮🇩 build with __Cheerio__ and __Node js_
 
 ### Endpoint Usage
 ---
-**Base Url** : `https://api.masak-apa.vercel.app`
+**Base Url** : `https://masak-apa-new.vercel.app`
 
 | Endpoint | Usage | Example |
 |----------|-------|---------|
 | new recipes | `/recipes` | - |
 | new recipes by page | `/recipes/:page` | `/recipes/1` |
 | new recipes limit | `/recipes-length/?limit=size` | `/recipes-length/?limit=5` |
-| recipes by category | `/categorys/recipes/:key` | `/categorys/recipes/masakan-hari-raya` |
-| recipes category | `/categorys/recipes` | - |
+| recipes by category | `/categories/recipes/:key` | `/categories/recipes/masakan-hari-raya` |
+| recipes category | `/categories/recipes` | - |
 | recipe detail | `/recipe/:key` | - |
 | search recipes | `/search/?q=parameter` | `/search/?q=coto` |
-| article categorys | `/categorys/article` | - |
-| article by category | `/categorys/article/:key` | `/categorys/article/makanan-gaya-hidup` |
+| article categories | `/categories/article` | - |
+| article by category | `/categories/article/:key` | `/categories/article/makanan-gaya-hidup` |
 | article | `/articles/new` | - |
 | article detail | `/article/:tag/:key` | `/article/makanan-gaya-hidup/papeda-dan-masakan-indonesia-timur` |
 
-#### Credits
-Copyright © 2020 Reski Arianto - redefine and forked by Tri Putra Ardiyansah
+#### What's the difference with the original?
 
-Build With 💙
+Simplify the url and CORS site allowed
+
+#### Credits
+Build by Reski Arianto - Rebuild by Tri Putra Ardiyansah
+
+Made With 💙
