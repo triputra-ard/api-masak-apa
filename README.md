@@ -24,14 +24,14 @@ Food recipes api bahasa Indonesia 🇮🇩 build with __Cheerio__ and __Node js_
 |----------|-------|---------|
 | new recipes | `/recipes` | - |
 | new recipes by page | `/recipes/:page` | `/recipes/1` |
-| new recipes limit | `/recipes-length/?limit=size` | `/recipes-length/?limit=5` |
-| recipes by category | `/categories/recipes/:key` | `/categories/recipes/masakan-hari-raya` |
-| recipes category | `/categories/recipes` | - |
+| new recipes limit | `/recipes/length/?limit=size` | `/recipes/length/?limit=5` |
+| recipes by category | `/categories/:key` | `/categories/masakan-hari-raya` |
+| recipes category | `/categories/` | - |
 | recipe detail | `/recipe/:key` | - |
 | search recipes | `/search/?q=parameter` | `/search/?q=coto` |
-| article categories | `/categories/article` | - |
-| article by category | `/categories/article/:key` | `/categories/article/makanan-gaya-hidup` |
-| article | `/articles/new` | - |
+| article categories | `/article` | - |
+| article by category | `/article/:key` | `/article/makanan-gaya-hidup` |
+| article new| `/article/new` | - |
 | article detail | `/article/:tag/:key` | `/article/makanan-gaya-hidup/papeda-dan-masakan-indonesia-timur` |
 
 #### What's the difference with the original?
