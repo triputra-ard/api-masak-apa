@@ -12,7 +12,7 @@ route.get('/', (req, res) => {
           by:"Reski Arianto",
           github:"https://github.com/tomorisakura"
         },
-        redefined:{
+        rebuild:{
           by:"Tri Putra Ardiyansah",
           github:"https://github.com/triputra-ard"
         },

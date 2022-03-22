@@ -2,9 +2,11 @@
 
 Food recipes api bahasa Indonesia 🇮🇩 build with __Cheerio__ and __Node js__ 🌸
 
+build by Reski Arianto 
+
 **Status** : Maintained 🚀
 
-### Documentation
+### Documentation New✨
 ---
 
 | Field | Description |
@@ -16,7 +18,7 @@ Food recipes api bahasa Indonesia 🇮🇩 build with __Cheerio__ and __Node js_
 
 
 
-### Endpoint Usage
+### Endpoint Usage New ✨
 ---
 **Base Url** : `https://masak-apa-new.vercel.app`
 
@@ -34,7 +36,7 @@ Food recipes api bahasa Indonesia 🇮🇩 build with __Cheerio__ and __Node js_
 | article new| `/article/new` | - |
 | article detail | `/article/:tag/:key` | `/article/makanan-gaya-hidup/papeda-dan-masakan-indonesia-timur` |
 
-#### What's the difference with the original?
+### What's the difference with the original?
 ---
 Simplify the url and CORS site allowed
 
