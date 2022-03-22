@@ -6,7 +6,7 @@ const fetchRecipes = (req, res, response) => {
     try {
         const $ = cheerio.load(response.data);
         const element = $('#category-content');
-        let title, thumb, duration, servings, dificulty, key, url, href;
+        let title, thumb, duration, servings, difficulty, key, url, href;
         let recipe_list = [];
         element.find('.category-posts');
         element.find('.post-col').each((i, e) => {
@@ -14,7 +14,7 @@ const fetchRecipes = (req, res, response) => {
             thumb = $(e).find('.thumb-wrapper').find('img').attr('data-lazy-src');
             duration = $(e).find('.time').find('small').text();
             servings = $(e).find('.servings').find('small').text();
-            dificulty = $(e).find('.difficulty').find('small').text();
+            difficulty = $(e).find('.difficulty').find('small').text();
             url = $(e).find('a').attr('href');
             href = url.split('/');
             key = href[4];
@@ -24,8 +24,8 @@ const fetchRecipes = (req, res, response) => {
                 thumb : thumb,
                 key : key,
                 times : duration,
-                portion : servings,
-                dificulty : dificulty
+                servings : servings,
+                difficulty : difficulty
             });
         });
         console.log('fetch new recipes');
@@ -43,7 +43,7 @@ const limiterRecipes = (req, res, response, limiter) => {
     try {
         const $ = cheerio.load(response.data);
         const element = $('#category-content');
-        let title, thumb, duration, servings, dificulty, key, url, href;
+        let title, thumb, duration, servings, difficulty, key, url, href;
         let recipe_list = [];
         element.find('.category-posts');
 
@@ -52,7 +52,7 @@ const limiterRecipes = (req, res, response, limiter) => {
             thumb = $(e).find('.thumb-wrapper').find('img').attr('data-lazy-src');
             duration = $(e).find('.time').find('small').text();
             servings = $(e).find('.servings').find('small').text();
-            dificulty = $(e).find('.difficulty').find('small').text();
+            difficulty = $(e).find('.difficulty').find('small').text();
             url = $(e).find('a').attr('href');
             href = url.split('/');
             key = href[4];
@@ -62,8 +62,8 @@ const limiterRecipes = (req, res, response, limiter) => {
                 thumb : thumb,
                 key : key,
                 times : duration,
-                portion : servings,
-                dificulty : dificulty
+                servings : servings,
+                difficulty : difficulty
             });
 
         });
@@ -202,10 +202,10 @@ const Controller = {
             const key = req.params.key;
             const response = await services.fetchService(`${baseUrl}/resep/${key}`, res);
             const $ = cheerio.load(response.data);
-            let metaDuration, metaServings, metaDificulty, metaIngredient;
+            let metaDuration, metaServings, metadifficulty, metaIngredient;
             let title , thumb, user, datePublished, desc, quantity, ingredient, ingredients;
-            let parseDuration, parseServings, parseDificulty, parseIngredient;
-            let duration, servings, dificulty;
+            let parseDuration, parseServings, parsedifficulty, parseIngredient;
+            let duration, servings, difficulty;
             let servingsArr = [];
             let difficultyArr = [];
             let object = {};
@@ -225,8 +225,8 @@ const Controller = {
             elementHeader.find('.recipe-info').each((i, e) => {
                 metaDuration = $(e).find('.time').find('small').text();
                 metaServings = $(e).find('.servings').find('small').text();
-                metaDificulty = $(e).find('.difficulty').find('small').text();
-                if (metaDuration.includes('\n') && metaServings.includes('\n') && metaDificulty.includes('\n')) {
+                metadifficulty = $(e).find('.difficulty').find('small').text();
+                if (metaDuration.includes('\n') && metaServings.includes('\n') && metadifficulty.includes('\n')) {
                     parseDuration = metaDuration.split('\n')[1].split(' ');
                     parseDuration.forEach( r => {
                         if(r !== "") duration = r;
@@ -237,18 +237,18 @@ const Controller = {
                         if(r !== "") servingsArr.push(r);
                     });
                     servings = Array.from(servingsArr).join(' ');
-                    parseDificulty = metaDificulty.split('\n')[1].split(' ');
-                    parseDificulty.forEach(r => {
+                    parsedifficulty = metadifficulty.split('\n')[1].split(' ');
+                    parsedifficulty.forEach(r => {
                         if(r !== "") difficultyArr.push(r);
                     });
-                    dificulty = Array.from(difficultyArr).join(' ');
+                    difficulty = Array.from(difficultyArr).join(' ');
                 }
 
                 object.title = title;
                 object.thumb = thumb;
                 object.servings = servings;
                 object.times = duration;
-                object.dificulty = dificulty;
+                object.difficulty = difficulty;
                 object.author = {user, datePublished};
             });
             
@@ -322,7 +322,7 @@ const Controller = {
                 thumb = $(e).find('.thumb-wrapper').find('img').last().attr('data-lazy-src');
                 key = url[4];
                 duration = $(e).find('.recipe-info').find('.time').find('small').text();
-                serving = $(e).find('.recipe-info').find('.servings').find('small').text();
+                servings = $(e).find('.recipe-info').find('.servings').find('small').text();
                 difficulty = $(e).find('.recipe-info').find('.difficulty').find('small').text();
 
                 search_list.push({
@@ -330,7 +330,7 @@ const Controller = {
                     thumb : thumb,
                     key : key,
                     times : duration,
-                    serving : serving,
+                    servings : servings,
                     difficulty : difficulty,
                 });
             });
