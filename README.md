@@ -29,7 +29,7 @@ build by Reski Arianto
 | new recipes limit | `/recipes/length/?limit=size` | `/recipes/length/?limit=5` |
 | recipes by category | `/categories/:key` | `/categories/masakan-hari-raya` |
 | recipes category | `/categories/` | - |
-| recipe detail | `/recipe/:key` | - |
+| recipe detail | `/recipes/details/:key` | - |
 | search recipes | `/search/?q=parameter` | `/search/?q=coto` |
 | article categories | `/article` | - |
 | article by category | `/article/:key` | `/article/makanan-gaya-hidup` |
@@ -38,7 +38,7 @@ build by Reski Arianto
 
 ### What's the difference with the original?
 ---
-Simplify the url and CORS site allowed
+Simplify **the url**, **the response** and **CORS** site **allowed**
 
 #### Credits
 Build by Reski Arianto - Rebuild by Tri Putra Ardiyansah

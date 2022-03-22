@@ -18,7 +18,7 @@ route.get('/', (req, res) => {
         },
         new_routes:{
           recipes:"/recipes",
-          recipes_detail:"/recipes/:key",
+          recipes_detail:"/recipes/details/:key",
           categories:"/categories",
           categories_details:"/categories/:key",
           article:"/article",
@@ -35,7 +35,7 @@ route.get('/categories', cors(), controller.category);
 route.get('/article/new', cors(), controller.article);
 route.get('/categories/:key', cors(), controller.recipesByCategory);
 route.get('/categories/:key/:page', cors(), controller.recipesCategoryByPage);
-route.get('/recipe/:key', cors(), controller.recipesDetail);
+route.get('/recipes/details/:key', cors(), controller.recipesDetail);
 route.get('/search/', cors(), controller.searchRecipes);
 route.get('/article', cors(), controller.articleCategory);
 route.get('/article/:key', cors(), controller.articleByCategory);
