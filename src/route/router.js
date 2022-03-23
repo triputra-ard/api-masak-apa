@@ -6,9 +6,8 @@ const controller = require('../controller/mainController');
 
 route.get('/', (req, res) => {
     res.send({
-        greet:"Hello 🖐️",
+        greet:"Hello",
         githubSource : 'https://github.com/triputra-ard/api-masak-apa',
-        documentation: '/README.pdf',
         build:{
           by:"Reski Arianto",
           github:"https://github.com/tomorisakura"
@@ -26,10 +25,9 @@ route.get('/', (req, res) => {
           article_detail:"/article/:tag/:key",
           search:"/search/?q=parameter"
         },
-        ask_for_source:'trieputra@live.com'
+        ask_for_source_code:'trieputra@live.com'
     });
 });
-
 route.get('/recipes', cors(), controller.newRecipes);
 route.get('/recipes/:page', cors(), controller.newRecipesByPage);
 route.get('/recipes/length/', cors(), controller.newRecipesLimit);
