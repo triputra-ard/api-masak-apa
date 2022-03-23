@@ -7,7 +7,8 @@ const controller = require('../controller/mainController');
 route.get('/', (req, res) => {
     res.send({
         greet:"Hello 🖐️",
-        documentation : 'https://github.com/triputra-ard/api-masak-apa',
+        githubSource : 'https://github.com/triputra-ard/api-masak-apa',
+        documentation: '/README.pdf',
         build:{
           by:"Reski Arianto",
           github:"https://github.com/tomorisakura"
@@ -24,7 +25,8 @@ route.get('/', (req, res) => {
           article:"/article",
           article_detail:"/article/:tag/:key",
           search:"/search/?q=parameter"
-        }
+        },
+        ask_for_source:'trieputra@live.com'
     });
 });
 
