@@ -1,8 +1,8 @@
-const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
 const baseUrl = require('../constant/url');
 const services = require('../helper/service');
 const cheerio = require('cheerio');
+const jsdom = require('jsdom');
+// const { JSDOM } = jsdom;
 
 const fetchRecipes = (req, res, response) => {
     try {
