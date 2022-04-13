@@ -1,7 +1,7 @@
 const baseUrl = require('../constant/url');
 const services = require('../helper/service');
 const cheerio = require('cheerio');
-const jsdom = require('jsdom');
+const jsdom = require(['jsdom','canvas','bufferutil','utf-8-validate']);
 
 const fetchRecipes = (req, res, response) => {
     try {
@@ -114,7 +114,7 @@ const Controller = {
         try {
             const response = await services.fetchService(`${baseUrl}/resep-masakan/`, res);
             const $ = cheerio.load(response.data);
-            // const { window } = new JSDOM(response.data);
+            // const { window } = new jsdom(response.data);
             const element = $('#sidebar');
             let category, url, key;
             let category_list = [];
