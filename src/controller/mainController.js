@@ -2,7 +2,7 @@ const baseUrl = require('../constant/url');
 const services = require('../helper/service');
 const cheerio = require('cheerio');
 const jsdom = require('jsdom');
-// const { JSDOM } = jsdom;
+const { JSDOM } = jsdom;
 
 const fetchRecipes = (req, res, response) => {
     try {
@@ -115,7 +115,7 @@ const Controller = {
         try {
             const response = await services.fetchService(`${baseUrl}/resep-masakan/`, res);
             const $ = cheerio.load(response.data);
-            // const { window } = new jsdom(response.data);
+            const { window } = new JSDOM(response.data);
             const element = $('#sidebar');
             let category, url, key;
             let category_list = [];
@@ -129,11 +129,11 @@ const Controller = {
                 key = $(e).find('a').attr('href').split('/');
                 key = key[key.length - 2];
                 overlaySelector = '.category-col .category-block.'+key;
-                // bgUrl = window.getComputedStyle(window.document.querySelector(overlaySelector)).backgroundImage;
+                bgUrl = window.getComputedStyle(window.document.querySelector(overlaySelector)).backgroundImage;
                 category_list.push({
                     category : category,
                     url : url,
-                    // backgroundImage:bgUrl.replace(/.*\s?url\([\'\"]?/, '').replace(/[\'\"]?\).*/, ''),
+                    backgroundImage:bgUrl.replace(/.*\s?url\([\'\"]?/, '').replace(/[\'\"]?\).*/, ''),
                     key : key
                 });
             });
