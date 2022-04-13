@@ -115,7 +115,6 @@ const Controller = {
         try {
             const response = await services.fetchService(`${baseUrl}/resep-masakan/`, res);
             const $ = cheerio.load(response.data);
-            // const { window } = new JSDOM(response.data);
             const element = $('#sidebar');
             let category, url, key;
             let category_list = [];
@@ -286,8 +285,9 @@ const Controller = {
                     if(r !== "") term.push(r);
                 });
                 ingredient = Array.from(term).join(' ');
-                ingredients = `${quantity} ${ingredient}`
-                ingredientsArr.push(ingredients)
+                quantityObj = `${quantity}`
+                ingredientObj = `${ingredient}`;
+                ingredientsArr.push({'quantity':quantityObj,'ingredient':ingredientObj})
             });
             
             object.ingredient = ingredientsArr;
@@ -295,7 +295,7 @@ const Controller = {
             let stepArr = [];
             elementTutorial.find('.steps').find('.step').each((i, e) => {
                 step = $(e).find('.step-description').find('p').text();
-                resultStep = `${i + 1} ${step}`
+                resultStep = `${step}`
                 stepArr.push(resultStep);
             });
 
