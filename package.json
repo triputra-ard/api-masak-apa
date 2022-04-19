@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "service": "node index",
+    "watch":"npx nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
