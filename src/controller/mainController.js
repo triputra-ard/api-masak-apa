@@ -13,6 +13,7 @@ const fetchRecipes = (req, res, response) => {
         element.find('.category-posts');
         element.find('.post-col').each((i, e) => {
             title = $(e).find('.block-link').attr('data-tracking-value');
+            console.log(title);
             thumb = $(e).find('.thumb-wrapper').find('img').attr('data-lazy-src');
             duration = $(e).find('.time').find('small').text();
             servings = $(e).find('.servings').find('small').text();
