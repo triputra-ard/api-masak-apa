@@ -323,7 +323,7 @@ const Controller = {
             let title, url, key, thumb, duration, serving, difficulty;
             let search_list = [];
             element.find('.results-row').find('.post-col').each((i, e) => {
-                title = $(e).find('a').attr('data-tracking-value');
+                title = $(e).find('.block-link').attr('data-tracking-value');
                 url = $(e).find('a').attr('href').split('/');
                 thumb = $(e).find('.thumb-wrapper').find('img').last().attr('data-lazy-src');
                 key = url[4];
