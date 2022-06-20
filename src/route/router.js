@@ -22,6 +22,7 @@ route.get('/', (req, res) => {
           categories:"/categories",
           categories_details:"/categories/:key",
           article:"/article",
+          article_view:"/article/:key",
           article_detail:"/article/:tag/:key",
           search:"/search/?q=parameter"
         },
