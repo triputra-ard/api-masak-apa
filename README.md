@@ -26,6 +26,7 @@ Food recipes api bahasa Indonesia 🇮🇩 build with **Cheerio** and **Node js*
 | new recipes         | `/recipes`                    | -                                                                |
 | new recipes by page | `/recipes/:page`              | `/recipes/1`                                                     |
 | new recipes limit   | `/recipes/length/?limit=size` | `/recipes/length/?limit=5`                                       |
+| category by pages   | `/recipes/:tag/:key`          | `/recipes/masakan-hari-raya/soto-ayam`                           |
 | recipes by category | `/categories/:key`            | `/categories/masakan-hari-raya`                                  |
 | recipes category    | `/categories/`                | -                                                                |
 | recipe detail       | `/recipes/full/details/:key`  | -                                                                |

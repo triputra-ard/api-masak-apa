@@ -363,10 +363,10 @@ const Controller = {
   recipesByPage: async (req, res) => {
     try {
       const page = req.params.page;
-      const categories = req.params.categories;
+      const categories = req.params.tag;
       const payload = await services.fetchService(
         categories != ""
-          ? `${baseUrl}/resep/${categories}/page/${page}`
+          ? `${baseUrl}/resep/${tag}/page/${page}`
           : `${baseUrl}/resep/page/${page}`,
         res
       );
