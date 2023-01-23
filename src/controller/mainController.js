@@ -8,7 +8,17 @@ const fetchRecipes = (req, res, payload) => {
   try {
     const $ = cheerio.load(payload.data);
     const element = $("#recipes-page");
-    let title, thumb, duration, servings, difficulty, key, url, href;
+    const paginationElement = $("._pagination-button .nav-links");
+    let title,
+      thumb,
+      duration,
+      servings,
+      difficulty,
+      key,
+      url,
+      href,
+      current_page,
+      pagination_limit;
     let recipe_list = [];
     element.find("._recipe-card").each((i, e) => {
       title = $(e).find(".card-title").find("a").attr("data-tracking-value");
@@ -36,11 +46,20 @@ const fetchRecipes = (req, res, payload) => {
         difficulty: difficulty,
       });
     });
+    current_page = paginationElement.find(".page-numbers.active").text();
+    pagination_limit = paginationElement
+      .find(".page-numbers:not(.next, .first, .last)")
+      .last()
+      .text();
     console.log("fetch new recipes");
     res.send({
       method: req.method,
       status: true,
       results: recipe_list,
+      pagination: {
+        current_page: parseInt(current_page),
+        page_limit: parseInt(pagination_limit),
+      },
     });
   } catch (error) {
     throw error;
@@ -57,14 +76,7 @@ const fetchRecipesDetails = (req, res, payload) => {
     const elementSteps = $("._recipe-steps");
     let objectPopulate = {};
     let metaDuration, metaServings, metadifficulty, metaIngredient;
-    let title,
-      thumb,
-      user,
-      datePublished,
-      description,
-      quantity,
-      ingredient,
-      ingredients;
+    let title, thumb, user, datePublished, description, quantity;
     let parseDuration, parseServings, parsedifficulty, parseIngredient;
     let duration, servings, difficulty;
     let servingsArr = [];
@@ -73,6 +85,47 @@ const fetchRecipesDetails = (req, res, payload) => {
     //send title
     title = elementHeader.find("h1").text();
     objectPopulate.title = title;
+
+    // process servings, times, and difficulty
+    metaDuration = elementMain
+      .find("._recipe-features")
+      .find(".btn.item:first-child")
+      .text();
+
+    metaServings = elementIngredients
+      .find(".portions")
+      .find("#portions-value")
+      .text();
+    metadifficulty = elementMain
+      .find("._recipe-features")
+      .find(".btn.item:last-child")
+      .text();
+    if (
+      metaDuration.includes("\n") &&
+      metaServings.includes("\n") &&
+      metadifficulty.includes("\n")
+    ) {
+      parseDuration = metaDuration.split("\n")[1].split(" ");
+      parseDuration.forEach((r) => {
+        if (r !== "") duration = r;
+      });
+
+      parseServings = metaServings.split("\n")[1].split(" ");
+      parseServings.forEach((r) => {
+        if (r !== "") servingsArr.push(r);
+      });
+      servings = Array.from(servingsArr).join(" ");
+      parsedifficulty = metadifficulty.split("\n")[1].split(" ");
+      parsedifficulty.forEach((r) => {
+        if (r !== "") difficultyArr.push(r);
+      });
+      difficulty = Array.from(difficultyArr).join(" ");
+    }
+
+    // send servings, times, and difficulty
+    objectPopulate.servings = servings + " Porsi";
+    objectPopulate.times = duration;
+    objectPopulate.difficulty = difficulty;
 
     // send thumbnails
     thumb = elementThumbnail.find("img.image").attr("data-src");
@@ -365,8 +418,8 @@ const Controller = {
       const page = req.params.page;
       const categories = req.params.tag;
       const payload = await services.fetchService(
-        categories != ""
-          ? `${baseUrl}/resep/${tag}/page/${page}`
+        categories != undefined
+          ? `${baseUrl}/resep/${categories}/page/${page}`
           : `${baseUrl}/resep/page/${page}`,
         res
       );

@@ -31,7 +31,7 @@ route.get("/", (req, res) => {
 });
 route.get("/recipes", cors(), controller.recipesAll);
 route.get("/recipes/:page", cors(), controller.recipesByPage);
-route.get("/recipes/:tag/:page", cors(), controller.recipesByPage);
+route.get("/recipes/bycategory/:tag/:page", cors(), controller.recipesByPage);
 route.get("/recipes/length/", cors(), controller.newRecipesLimit);
 route.get("/recipes/full/details/:key", cors(), controller.recipeWithDetails);
 route.get("/categories", cors(), controller.category);
