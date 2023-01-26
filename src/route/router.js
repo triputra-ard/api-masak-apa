@@ -8,17 +8,13 @@ route.get("/", (req, res) => {
   res.send({
     greet: "Hello",
     githubSource: "https://github.com/triputra-ard/api-masak-apa",
-    build: {
-      by: "Reski Arianto",
-      github: "https://github.com/tomorisakura",
-    },
-    rebuild: {
+    maintained: {
       by: "Tri Putra Ardiyansah",
       github: "https://github.com/triputra-ard",
     },
     new_routes: {
       recipes: "/recipes",
-      recipes_detail: "/recipes/details/:key",
+      recipes_detail: "/recipes/full/details/:key",
       categories: "/categories",
       categories_details: "/categories/:key",
       article: "/article",
