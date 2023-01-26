@@ -1,17 +1,17 @@
 {
-  "name": "eresep-api-unofficial",
+  "name": "masak-apa-hari-ini-api",
   "version": "1.0.0",
-  "description": "eresep scrapper",
+  "description": "food recipes Web scrapper",
   "main": "index.js",
   "scripts": {
     "service": "node index",
-    "watch": "npx nodemon index",
+    "dev": "npx nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "nodejs"
   ],
-  "author": "Reski Arianto - redefine by Tri Putra Ardiyansah",
+  "author": "Tri Putra Ardiyansah",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.20.0",
