@@ -51,7 +51,8 @@ Made With 💙
 
 ## Tech Stack
 
-**Server:** Node, Cheerio
+**Server:** Node, Express, Nodemon
+**Library:** Cheerio
 
 ## Installation
 
