@@ -72,13 +72,13 @@ or
 To run the development server :
 
 ```bash
-  npm run watch
+  npm run dev
 ```
 
 or
 
 ```bash
-  yarn watch
+  yarn dev
 ```
 
 ## Used By
